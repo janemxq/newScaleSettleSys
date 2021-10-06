@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.TbHuopindanjiaMapper">
+    
+    <resultMap type="TbHuopindanjia" id="TbHuopindanjiaResult">
+        <result property="id"    column="ID"    />
+        <result property="idZhanghu"    column="ID_ZHANGHU"    />
+        <result property="idHuopin"    column="ID_HUOPIN"    />
+        <result property="kaihushijian"    column="KAIHUSHIJIAN"    />
+        <result property="kaihujine"    column="KAIHUJINE"    />
+        <result property="danjia"    column="DANJIA"    />
+        <result property="dangqianyue"    column="DANGQIANYUE"    />
+        <result property="xingyongedu"    column="XINGYONGEDU"    />
+        <result property="xingyongyue"    column="XINGYONGYUE"    />
+        <result property="zuihouxiugairiqi"    column="ZUIHOUXIUGAIRIQI"    />
+        <result property="shifouyishanchu"    column="SHIFOUYISHANCHU"    />
+        <result property="shunxuhao"    column="SHUNXUHAO"    />
+    </resultMap>
+
+    <sql id="selectTbHuopindanjiaVo">
+        select ID, ID_ZHANGHU, ID_HUOPIN, KAIHUSHIJIAN, KAIHUJINE, DANJIA, DANGQIANYUE, XINGYONGEDU, XINGYONGYUE, ZUIHOUXIUGAIRIQI, SHIFOUYISHANCHU, SHUNXUHAO from tb_huopindanjia
+    </sql>
+
+    <select id="selectTbHuopindanjiaList" parameterType="TbHuopindanjia" resultMap="TbHuopindanjiaResult">
+        <include refid="selectTbHuopindanjiaVo"/>
+        <where>  
+            <if test="id != null "> and ID = #{id}</if>
+            <if test="idZhanghu != null  and idZhanghu != ''"> and ID_ZHANGHU = #{idZhanghu}</if>
+            <if test="idHuopin != null  and idHuopin != ''"> and ID_HUOPIN = #{idHuopin}</if>
+            <if test="kaihushijian != null "> and KAIHUSHIJIAN = #{kaihushijian}</if>
+            <if test="kaihujine != null "> and KAIHUJINE = #{kaihujine}</if>
+            <if test="danjia != null "> and DANJIA = #{danjia}</if>
+            <if test="dangqianyue != null "> and DANGQIANYUE = #{dangqianyue}</if>
+            <if test="xingyongedu != null "> and XINGYONGEDU = #{xingyongedu}</if>
+            <if test="xingyongyue != null "> and XINGYONGYUE = #{xingyongyue}</if>
+            <if test="zuihouxiugairiqi != null "> and ZUIHOUXIUGAIRIQI = #{zuihouxiugairiqi}</if>
+            <if test="shifouyishanchu != null "> and SHIFOUYISHANCHU = #{shifouyishanchu}</if>
+            <if test="shunxuhao != null "> and SHUNXUHAO = #{shunxuhao}</if>
+        </where>
+    </select>
+    
+    <select id="selectTbHuopindanjiaById" parameterType="Long" resultMap="TbHuopindanjiaResult">
+        <include refid="selectTbHuopindanjiaVo"/>
+        where ID = #{id}
+    </select>
+        
+    <insert id="insertTbHuopindanjia" parameterType="TbHuopindanjia">
+        insert into tb_huopindanjia
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">ID,</if>
+            <if test="idZhanghu != null and idZhanghu != ''">ID_ZHANGHU,</if>
+            <if test="idHuopin != null">ID_HUOPIN,</if>
+            <if test="kaihushijian != null">KAIHUSHIJIAN,</if>
+            <if test="kaihujine != null">KAIHUJINE,</if>
+            <if test="danjia != null">DANJIA,</if>
+            <if test="dangqianyue != null">DANGQIANYUE,</if>
+            <if test="xingyongedu != null">XINGYONGEDU,</if>
+            <if test="xingyongyue != null">XINGYONGYUE,</if>
+            <if test="zuihouxiugairiqi != null">ZUIHOUXIUGAIRIQI,</if>
+            <if test="shifouyishanchu != null">SHIFOUYISHANCHU,</if>
+            <if test="shunxuhao != null">SHUNXUHAO,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="idZhanghu != null and idZhanghu != ''">#{idZhanghu},</if>
+            <if test="idHuopin != null">#{idHuopin},</if>
+            <if test="kaihushijian != null">#{kaihushijian},</if>
+            <if test="kaihujine != null">#{kaihujine},</if>
+            <if test="danjia != null">#{danjia},</if>
+            <if test="dangqianyue != null">#{dangqianyue},</if>
+            <if test="xingyongedu != null">#{xingyongedu},</if>
+            <if test="xingyongyue != null">#{xingyongyue},</if>
+            <if test="zuihouxiugairiqi != null">#{zuihouxiugairiqi},</if>
+            <if test="shifouyishanchu != null">#{shifouyishanchu},</if>
+            <if test="shunxuhao != null">#{shunxuhao},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTbHuopindanjia" parameterType="TbHuopindanjia">
+        update tb_huopindanjia
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="idZhanghu != null and idZhanghu != ''">ID_ZHANGHU = #{idZhanghu},</if>
+            <if test="idHuopin != null">ID_HUOPIN = #{idHuopin},</if>
+            <if test="kaihushijian != null">KAIHUSHIJIAN = #{kaihushijian},</if>
+            <if test="kaihujine != null">KAIHUJINE = #{kaihujine},</if>
+            <if test="danjia != null">DANJIA = #{danjia},</if>
+            <if test="dangqianyue != null">DANGQIANYUE = #{dangqianyue},</if>
+            <if test="xingyongedu != null">XINGYONGEDU = #{xingyongedu},</if>
+            <if test="xingyongyue != null">XINGYONGYUE = #{xingyongyue},</if>
+            <if test="zuihouxiugairiqi != null">ZUIHOUXIUGAIRIQI = #{zuihouxiugairiqi},</if>
+            <if test="shifouyishanchu != null">SHIFOUYISHANCHU = #{shifouyishanchu},</if>
+            <if test="shunxuhao != null">SHUNXUHAO = #{shunxuhao},</if>
+        </trim>
+        where ID = #{id}
+    </update>
+
+    <delete id="deleteTbHuopindanjiaById" parameterType="Long">
+        delete from tb_huopindanjia where ID = #{id}
+    </delete>
+
+    <delete id="deleteTbHuopindanjiaByIds" parameterType="String">
+        delete from tb_huopindanjia where ID in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.caiwu.mapper.VYuncunkuanzhanhuMapper">
+    
+    <resultMap type="VYuncunkuanzhanhu" id="VYuncunkuanzhanhuResult">
+        <result property="id"    column="ID"    />
+        <result property="yucunkuanzhanghu"    column="YuCunKuanZhangHu"    />
+        <result property="idKehu"    column="ID_KeHu"    />
+        <result property="kehumingcheng"    column="KeHuMingCheng"    />
+        <result property="kaihushijian"    column="KaiHuShiJian"    />
+        <result property="zhangkuzhuangtai"    column="ZhangKuZhuangTai"    />
+        <result property="zhangkuzhuangtaimingcheng"    column="ZhangKuZhuangTaiMingCheng"    />
+        <result property="miaoshu"    column="MiaoShu"    />
+        <result property="idXinzengren"    column="ID_XinZengRen"    />
+        <result property="xingzengren"    column="XingZengRen"    />
+        <result property="xingzengrenxingming"    column="XingZengRenXingMing"    />
+        <result property="xinzengriqi"    column="XinZengRiQi"    />
+        <result property="idZuihouxiugairen"    column="ID_ZuiHouXiuGaiRen"    />
+        <result property="zuihouxiugairen"    column="ZuiHouXiuGaiRen"    />
+        <result property="zuihouxiugairenxingming"    column="ZuiHouXiuGaiRenXingMing"    />
+        <result property="zuihouxiugairiqi"    column="ZuiHouXiuGaiRiQi"    />
+        <result property="dangqianyue"    column="DANGQIANYUE"    />
+        <result property="xingyongyiyong"    column="XINGYONGYIYONG"    />
+        <result property="xingyongedu"    column="XINGYONGEDU"    />
+    </resultMap>
+
+    <sql id="selectVYuncunkuanzhanhuVo">
+        select ID, YuCunKuanZhangHu, ID_KeHu, KeHuMingCheng, KaiHuShiJian, ZhangKuZhuangTai, ZhangKuZhuangTaiMingCheng, MiaoShu, ID_XinZengRen, XingZengRen, XingZengRenXingMing, XinZengRiQi, ID_ZuiHouXiuGaiRen, ZuiHouXiuGaiRen, ZuiHouXiuGaiRenXingMing, ZuiHouXiuGaiRiQi, DANGQIANYUE, XINGYONGYIYONG, XINGYONGEDU from v_yuncunkuanzhanhu
+    </sql>
+
+    <select id="selectVYuncunkuanzhanhuList" parameterType="VYuncunkuanzhanhu" resultMap="VYuncunkuanzhanhuResult">
+        <include refid="selectVYuncunkuanzhanhuVo"/>
+        <where>  
+            <if test="yucunkuanzhanghu != null  and yucunkuanzhanghu != ''"> and YuCunKuanZhangHu = #{yucunkuanzhanghu}</if>
+            <if test="kehumingcheng != null  and kehumingcheng != ''"> and KeHuMingCheng = #{kehumingcheng}</if>
+            <if test="kaihushijian != null "> and KaiHuShiJian = #{kaihushijian}</if>
+            <if test="zhangkuzhuangtaimingcheng != null  and zhangkuzhuangtaimingcheng != ''"> and ZhangKuZhuangTaiMingCheng = #{zhangkuzhuangtaimingcheng}</if>
+            <if test="xingzengrenxingming != null  and xingzengrenxingming != ''"> and XingZengRenXingMing = #{xingzengrenxingming}</if>
+            <if test="xinzengriqi != null "> and XinZengRiQi = #{xinzengriqi}</if>
+            <if test="zuihouxiugairen != null  and zuihouxiugairen != ''"> and ZuiHouXiuGaiRen = #{zuihouxiugairen}</if>
+            <if test="zuihouxiugairenxingming != null  and zuihouxiugairenxingming != ''"> and ZuiHouXiuGaiRenXingMing = #{zuihouxiugairenxingming}</if>
+            <if test="zuihouxiugairiqi != null "> and ZuiHouXiuGaiRiQi = #{zuihouxiugairiqi}</if>
+            <if test="dangqianyue != null "> and DANGQIANYUE = #{dangqianyue}</if>
+            <if test="xingyongyiyong != null "> and XINGYONGYIYONG = #{xingyongyiyong}</if>
+            <if test="xingyongedu != null "> and XINGYONGEDU = #{xingyongedu}</if>
+        </where>
+    </select>
+    
+    <select id="selectVYuncunkuanzhanhuById" parameterType="Long" resultMap="VYuncunkuanzhanhuResult">
+        <include refid="selectVYuncunkuanzhanhuVo"/>
+        where ID = #{id}
+    </select>
+        
+    <insert id="insertVYuncunkuanzhanhu" parameterType="VYuncunkuanzhanhu">
+        insert into v_yuncunkuanzhanhu
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">ID,</if>
+            <if test="yucunkuanzhanghu != null and yucunkuanzhanghu != ''">YuCunKuanZhangHu,</if>
+            <if test="idKehu != null">ID_KeHu,</if>
+            <if test="kehumingcheng != null and kehumingcheng != ''">KeHuMingCheng,</if>
+            <if test="kaihushijian != null">KaiHuShiJian,</if>
+            <if test="zhangkuzhuangtai != null">ZhangKuZhuangTai,</if>
+            <if test="zhangkuzhuangtaimingcheng != null and zhangkuzhuangtaimingcheng != ''">ZhangKuZhuangTaiMingCheng,</if>
+            <if test="miaoshu != null">MiaoShu,</if>
+            <if test="idXinzengren != null">ID_XinZengRen,</if>
+            <if test="xingzengren != null">XingZengRen,</if>
+            <if test="xingzengrenxingming != null">XingZengRenXingMing,</if>
+            <if test="xinzengriqi != null">XinZengRiQi,</if>
+            <if test="idZuihouxiugairen != null">ID_ZuiHouXiuGaiRen,</if>
+            <if test="zuihouxiugairen != null">ZuiHouXiuGaiRen,</if>
+            <if test="zuihouxiugairenxingming != null">ZuiHouXiuGaiRenXingMing,</if>
+            <if test="zuihouxiugairiqi != null">ZuiHouXiuGaiRiQi,</if>
+            <if test="dangqianyue != null">DANGQIANYUE,</if>
+            <if test="xingyongyiyong != null">XINGYONGYIYONG,</if>
+            <if test="xingyongedu != null">XINGYONGEDU,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="yucunkuanzhanghu != null and yucunkuanzhanghu != ''">#{yucunkuanzhanghu},</if>
+            <if test="idKehu != null">#{idKehu},</if>
+            <if test="kehumingcheng != null and kehumingcheng != ''">#{kehumingcheng},</if>
+            <if test="kaihushijian != null">#{kaihushijian},</if>
+            <if test="zhangkuzhuangtai != null">#{zhangkuzhuangtai},</if>
+            <if test="zhangkuzhuangtaimingcheng != null and zhangkuzhuangtaimingcheng != ''">#{zhangkuzhuangtaimingcheng},</if>
+            <if test="miaoshu != null">#{miaoshu},</if>
+            <if test="idXinzengren != null">#{idXinzengren},</if>
+            <if test="xingzengren != null">#{xingzengren},</if>
+            <if test="xingzengrenxingming != null">#{xingzengrenxingming},</if>
+            <if test="xinzengriqi != null">#{xinzengriqi},</if>
+            <if test="idZuihouxiugairen != null">#{idZuihouxiugairen},</if>
+            <if test="zuihouxiugairen != null">#{zuihouxiugairen},</if>
+            <if test="zuihouxiugairenxingming != null">#{zuihouxiugairenxingming},</if>
+            <if test="zuihouxiugairiqi != null">#{zuihouxiugairiqi},</if>
+            <if test="dangqianyue != null">#{dangqianyue},</if>
+            <if test="xingyongyiyong != null">#{xingyongyiyong},</if>
+            <if test="xingyongedu != null">#{xingyongedu},</if>
+         </trim>
+    </insert>
+
+    <update id="updateVYuncunkuanzhanhu" parameterType="VYuncunkuanzhanhu">
+        update v_yuncunkuanzhanhu
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="yucunkuanzhanghu != null and yucunkuanzhanghu != ''">YuCunKuanZhangHu = #{yucunkuanzhanghu},</if>
+            <if test="idKehu != null">ID_KeHu = #{idKehu},</if>
+            <if test="kehumingcheng != null and kehumingcheng != ''">KeHuMingCheng = #{kehumingcheng},</if>
+            <if test="kaihushijian != null">KaiHuShiJian = #{kaihushijian},</if>
+            <if test="zhangkuzhuangtai != null">ZhangKuZhuangTai = #{zhangkuzhuangtai},</if>
+            <if test="zhangkuzhuangtaimingcheng != null and zhangkuzhuangtaimingcheng != ''">ZhangKuZhuangTaiMingCheng = #{zhangkuzhuangtaimingcheng},</if>
+            <if test="miaoshu != null">MiaoShu = #{miaoshu},</if>
+            <if test="idXinzengren != null">ID_XinZengRen = #{idXinzengren},</if>
+            <if test="xingzengren != null">XingZengRen = #{xingzengren},</if>
+            <if test="xingzengrenxingming != null">XingZengRenXingMing = #{xingzengrenxingming},</if>
+            <if test="xinzengriqi != null">XinZengRiQi = #{xinzengriqi},</if>
+            <if test="idZuihouxiugairen != null">ID_ZuiHouXiuGaiRen = #{idZuihouxiugairen},</if>
+            <if test="zuihouxiugairen != null">ZuiHouXiuGaiRen = #{zuihouxiugairen},</if>
+            <if test="zuihouxiugairenxingming != null">ZuiHouXiuGaiRenXingMing = #{zuihouxiugairenxingming},</if>
+            <if test="zuihouxiugairiqi != null">ZuiHouXiuGaiRiQi = #{zuihouxiugairiqi},</if>
+            <if test="dangqianyue != null">DANGQIANYUE = #{dangqianyue},</if>
+            <if test="xingyongyiyong != null">XINGYONGYIYONG = #{xingyongyiyong},</if>
+            <if test="xingyongedu != null">XINGYONGEDU = #{xingyongedu},</if>
+        </trim>
+        where ID = #{id}
+    </update>
+
+    <delete id="deleteVYuncunkuanzhanhuById" parameterType="Long">
+        delete from v_yuncunkuanzhanhu where ID = #{id}
+    </delete>
+
+    <delete id="deleteVYuncunkuanzhanhuByIds" parameterType="String">
+        delete from v_yuncunkuanzhanhu where ID in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.VrsmaterialMapper">
+    
+    <resultMap type="Vrsmaterial" id="VrsmaterialResult">
+        <result property="materialcode"    column="MATERIALCODE"    />
+        <result property="materialname"    column="MATERIALNAME"    />
+        <result property="relatedcode"    column="RELATEDCODE"    />
+        <result property="pycode"    column="PYCODE"    />
+        <result property="units"    column="UNITS"    />
+        <result property="singlegross"    column="SINGLEGROSS"    />
+        <result property="standardpackage"    column="STANDARDPACKAGE"    />
+        <result property="materialspc"    column="MATERIALSPC"    />
+        <result property="materialtype"    column="MATERIALTYPE"    />
+        <result property="comparisontype"    column="COMPARISONTYPE"    />
+        <result property="comparisonvalue"    column="COMPARISONVALUE"    />
+        <result property="spareStr1"    column="SPARE_STR1"    />
+        <result property="spareStr2"    column="SPARE_STR2"    />
+        <result property="spareStr3"    column="SPARE_STR3"    />
+        <result property="note"    column="NOTE"    />
+        <result property="createTime"    column="CREATE_TIME"    />
+        <result property="spareStr4"    column="SPARE_STR4"    />
+        <result property="spareStr5"    column="SPARE_STR5"    />
+        <result property="spareStr6"    column="SPARE_STR6"    />
+        <result property="spareStr7"    column="SPARE_STR7"    />
+        <result property="spareStr8"    column="SPARE_STR8"    />
+        <result property="spareStr9"    column="SPARE_STR9"    />
+        <result property="spareStr10"    column="SPARE_STR10"    />
+        <result property="spareStr11"    column="SPARE_STR11"    />
+        <result property="organization"    column="ORGANIZATION"    />
+        <result property="companycode"    column="COMPANYCODE"    />
+        <result property="materialclass"    column="MATERIALCLASS"    />
+        <result property="ismanage"    column="ISMANAGE"    />
+        <result property="standardtare"    column="STANDARDTARE"    />
+        <result property="factorycode"    column="FACTORYCODE"    />
+        <result property="materialid"    column="MATERIALID"    />
+    </resultMap>
+
+    <sql id="selectVrsmaterialVo">
+        select MATERIALCODE, MATERIALNAME, RELATEDCODE, PYCODE, UNITS, SINGLEGROSS, STANDARDPACKAGE, MATERIALSPC, MATERIALTYPE, COMPARISONTYPE, COMPARISONVALUE, SPARE_STR1, SPARE_STR2, SPARE_STR3, NOTE, CREATE_TIME, SPARE_STR4, SPARE_STR5, SPARE_STR6, SPARE_STR7, SPARE_STR8, SPARE_STR9, SPARE_STR10, SPARE_STR11, ORGANIZATION, COMPANYCODE, MATERIALCLASS, ISMANAGE, STANDARDTARE, FACTORYCODE, MATERIALID from vrsmaterial
+    </sql>
+
+    <select id="selectVrsmaterialList" parameterType="Vrsmaterial" resultMap="VrsmaterialResult">
+        <include refid="selectVrsmaterialVo"/>
+        <where>  
+            <if test="materialname != null  and materialname != ''"> and MATERIALNAME like concat('%', #{materialname}, '%')</if>
+            <if test="relatedcode != null  and relatedcode != ''"> and RELATEDCODE = #{relatedcode}</if>
+            <if test="pycode != null  and pycode != ''"> and PYCODE = #{pycode}</if>
+            <if test="units != null  and units != ''"> and UNITS = #{units}</if>
+            <if test="singlegross != null "> and SINGLEGROSS = #{singlegross}</if>
+            <if test="standardpackage != null "> and STANDARDPACKAGE = #{standardpackage}</if>
+            <if test="materialspc != null  and materialspc != ''"> and MATERIALSPC = #{materialspc}</if>
+            <if test="materialtype != null  and materialtype != ''"> and MATERIALTYPE = #{materialtype}</if>
+            <if test="comparisontype != null "> and COMPARISONTYPE = #{comparisontype}</if>
+            <if test="comparisonvalue != null "> and COMPARISONVALUE = #{comparisonvalue}</if>
+            <if test="spareStr1 != null  and spareStr1 != ''"> and SPARE_STR1 = #{spareStr1}</if>
+            <if test="spareStr2 != null  and spareStr2 != ''"> and SPARE_STR2 = #{spareStr2}</if>
+            <if test="spareStr3 != null  and spareStr3 != ''"> and SPARE_STR3 = #{spareStr3}</if>
+            <if test="note != null  and note != ''"> and NOTE = #{note}</if>
+            <if test="createTime != null "> and CREATE_TIME = #{createTime}</if>
+            <if test="spareStr4 != null  and spareStr4 != ''"> and SPARE_STR4 = #{spareStr4}</if>
+            <if test="spareStr5 != null  and spareStr5 != ''"> and SPARE_STR5 = #{spareStr5}</if>
+            <if test="spareStr6 != null "> and SPARE_STR6 = #{spareStr6}</if>
+            <if test="spareStr7 != null "> and SPARE_STR7 = #{spareStr7}</if>
+            <if test="spareStr8 != null  and spareStr8 != ''"> and SPARE_STR8 = #{spareStr8}</if>
+            <if test="spareStr9 != null  and spareStr9 != ''"> and SPARE_STR9 = #{spareStr9}</if>
+            <if test="spareStr10 != null  and spareStr10 != ''"> and SPARE_STR10 = #{spareStr10}</if>
+            <if test="spareStr11 != null  and spareStr11 != ''"> and SPARE_STR11 = #{spareStr11}</if>
+            <if test="organization != null  and organization != ''"> and ORGANIZATION = #{organization}</if>
+            <if test="companycode != null  and companycode != ''"> and COMPANYCODE = #{companycode}</if>
+            <if test="materialclass != null  and materialclass != ''"> and MATERIALCLASS = #{materialclass}</if>
+            <if test="ismanage != null "> and ISMANAGE = #{ismanage}</if>
+            <if test="standardtare != null "> and STANDARDTARE = #{standardtare}</if>
+            <if test="factorycode != null  and factorycode != ''"> and FACTORYCODE = #{factorycode}</if>
+            <if test="materialid != null  and materialid != ''"> and MATERIALID = #{materialid}</if>
+        </where>
+    </select>
+    
+    <select id="selectVrsmaterialByMaterialcode" parameterType="String" resultMap="VrsmaterialResult">
+        <include refid="selectVrsmaterialVo"/>
+        where MATERIALCODE = #{materialcode}
+    </select>
+        
+    <insert id="insertVrsmaterial" parameterType="Vrsmaterial">
+        insert into vrsmaterial
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="materialcode != null">MATERIALCODE,</if>
+            <if test="materialname != null">MATERIALNAME,</if>
+            <if test="relatedcode != null">RELATEDCODE,</if>
+            <if test="pycode != null">PYCODE,</if>
+            <if test="units != null">UNITS,</if>
+            <if test="singlegross != null">SINGLEGROSS,</if>
+            <if test="standardpackage != null">STANDARDPACKAGE,</if>
+            <if test="materialspc != null">MATERIALSPC,</if>
+            <if test="materialtype != null">MATERIALTYPE,</if>
+            <if test="comparisontype != null">COMPARISONTYPE,</if>
+            <if test="comparisonvalue != null">COMPARISONVALUE,</if>
+            <if test="spareStr1 != null">SPARE_STR1,</if>
+            <if test="spareStr2 != null">SPARE_STR2,</if>
+            <if test="spareStr3 != null">SPARE_STR3,</if>
+            <if test="note != null">NOTE,</if>
+            <if test="createTime != null">CREATE_TIME,</if>
+            <if test="spareStr4 != null">SPARE_STR4,</if>
+            <if test="spareStr5 != null">SPARE_STR5,</if>
+            <if test="spareStr6 != null">SPARE_STR6,</if>
+            <if test="spareStr7 != null">SPARE_STR7,</if>
+            <if test="spareStr8 != null">SPARE_STR8,</if>
+            <if test="spareStr9 != null">SPARE_STR9,</if>
+            <if test="spareStr10 != null">SPARE_STR10,</if>
+            <if test="spareStr11 != null">SPARE_STR11,</if>
+            <if test="organization != null">ORGANIZATION,</if>
+            <if test="companycode != null">COMPANYCODE,</if>
+            <if test="materialclass != null">MATERIALCLASS,</if>
+            <if test="ismanage != null">ISMANAGE,</if>
+            <if test="standardtare != null">STANDARDTARE,</if>
+            <if test="factorycode != null">FACTORYCODE,</if>
+            <if test="materialid != null">MATERIALID,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="materialcode != null">#{materialcode},</if>
+            <if test="materialname != null">#{materialname},</if>
+            <if test="relatedcode != null">#{relatedcode},</if>
+            <if test="pycode != null">#{pycode},</if>
+            <if test="units != null">#{units},</if>
+            <if test="singlegross != null">#{singlegross},</if>
+            <if test="standardpackage != null">#{standardpackage},</if>
+            <if test="materialspc != null">#{materialspc},</if>
+            <if test="materialtype != null">#{materialtype},</if>
+            <if test="comparisontype != null">#{comparisontype},</if>
+            <if test="comparisonvalue != null">#{comparisonvalue},</if>
+            <if test="spareStr1 != null">#{spareStr1},</if>
+            <if test="spareStr2 != null">#{spareStr2},</if>
+            <if test="spareStr3 != null">#{spareStr3},</if>
+            <if test="note != null">#{note},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="spareStr4 != null">#{spareStr4},</if>
+            <if test="spareStr5 != null">#{spareStr5},</if>
+            <if test="spareStr6 != null">#{spareStr6},</if>
+            <if test="spareStr7 != null">#{spareStr7},</if>
+            <if test="spareStr8 != null">#{spareStr8},</if>
+            <if test="spareStr9 != null">#{spareStr9},</if>
+            <if test="spareStr10 != null">#{spareStr10},</if>
+            <if test="spareStr11 != null">#{spareStr11},</if>
+            <if test="organization != null">#{organization},</if>
+            <if test="companycode != null">#{companycode},</if>
+            <if test="materialclass != null">#{materialclass},</if>
+            <if test="ismanage != null">#{ismanage},</if>
+            <if test="standardtare != null">#{standardtare},</if>
+            <if test="factorycode != null">#{factorycode},</if>
+            <if test="materialid != null">#{materialid},</if>
+         </trim>
+    </insert>
+
+    <update id="updateVrsmaterial" parameterType="Vrsmaterial">
+        update vrsmaterial
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="materialname != null">MATERIALNAME = #{materialname},</if>
+            <if test="relatedcode != null">RELATEDCODE = #{relatedcode},</if>
+            <if test="pycode != null">PYCODE = #{pycode},</if>
+            <if test="units != null">UNITS = #{units},</if>
+            <if test="singlegross != null">SINGLEGROSS = #{singlegross},</if>
+            <if test="standardpackage != null">STANDARDPACKAGE = #{standardpackage},</if>
+            <if test="materialspc != null">MATERIALSPC = #{materialspc},</if>
+            <if test="materialtype != null">MATERIALTYPE = #{materialtype},</if>
+            <if test="comparisontype != null">COMPARISONTYPE = #{comparisontype},</if>
+            <if test="comparisonvalue != null">COMPARISONVALUE = #{comparisonvalue},</if>
+            <if test="spareStr1 != null">SPARE_STR1 = #{spareStr1},</if>
+            <if test="spareStr2 != null">SPARE_STR2 = #{spareStr2},</if>
+            <if test="spareStr3 != null">SPARE_STR3 = #{spareStr3},</if>
+            <if test="note != null">NOTE = #{note},</if>
+            <if test="createTime != null">CREATE_TIME = #{createTime},</if>
+            <if test="spareStr4 != null">SPARE_STR4 = #{spareStr4},</if>
+            <if test="spareStr5 != null">SPARE_STR5 = #{spareStr5},</if>
+            <if test="spareStr6 != null">SPARE_STR6 = #{spareStr6},</if>
+            <if test="spareStr7 != null">SPARE_STR7 = #{spareStr7},</if>
+            <if test="spareStr8 != null">SPARE_STR8 = #{spareStr8},</if>
+            <if test="spareStr9 != null">SPARE_STR9 = #{spareStr9},</if>
+            <if test="spareStr10 != null">SPARE_STR10 = #{spareStr10},</if>
+            <if test="spareStr11 != null">SPARE_STR11 = #{spareStr11},</if>
+            <if test="organization != null">ORGANIZATION = #{organization},</if>
+            <if test="companycode != null">COMPANYCODE = #{companycode},</if>
+            <if test="materialclass != null">MATERIALCLASS = #{materialclass},</if>
+            <if test="ismanage != null">ISMANAGE = #{ismanage},</if>
+            <if test="standardtare != null">STANDARDTARE = #{standardtare},</if>
+            <if test="factorycode != null">FACTORYCODE = #{factorycode},</if>
+            <if test="materialid != null">MATERIALID = #{materialid},</if>
+        </trim>
+        where MATERIALCODE = #{materialcode}
+    </update>
+
+    <delete id="deleteVrsmaterialByMaterialcode" parameterType="String">
+        delete from vrsmaterial where MATERIALCODE = #{materialcode}
+    </delete>
+
+    <delete id="deleteVrsmaterialByMaterialcodes" parameterType="String">
+        delete from vrsmaterial where MATERIALCODE in 
+        <foreach item="materialcode" collection="array" open="(" separator="," close=")">
+            #{materialcode}
+        </foreach>
+    </delete>
+</mapper>
